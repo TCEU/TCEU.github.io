@@ -67,22 +67,28 @@
             <p>앞의 두 칸은 사양명과 사양별 SOP입니다. 이 캡처는 과제 전체 수량이므로 비워 둡니다. 2030년 수량을 확인할 수 없다면 <code>,,2030,</code>으로 남기세요.</p>
             <p><b>저장 후 확인.</b> <b>Existing project</b>에서 연결할 과제를 확인하고 <b>Confirm and save</b>를 누릅니다. <b>Program sources → 해당 OEM → 과제명 → Annual quantities</b>에서 저장값을 확인하세요. 검토 화면이 열린 뒤 15분이 지나 만료됐다는 메시지가 나오면 파일을 다시 올려 검토를 시작합니다.</p>
           </details>
-          <details class="source-example" open>
-            <summary>가상 캡처 예시와 OCR 확인값</summary>
-            <figure><img src="examples/demo-lumen.png" width="780" height="380" loading="lazy" alt="가상 Demo Lumen 캡처. SOP 2029, EOP 2031, 생산 거점 Demo Plant, R&amp;D 거점 Demo Lab."><figcaption>인식 결과에서 2029년 <b>7,500</b>, 2030년 <b>9,200</b>, 2031년 <b>13,800</b>인지 확인하세요.</figcaption></figure>
-            <a class="inline" href="examples/demo-lumen.png" download>실습용 캡처 다운로드 (PNG)</a>
-          </details>
-          <details class="source-example">
-            <summary>가상 Excel 예시와 사양별 조회 결과</summary>
-            <p>아래는 예시 파일을 저장한 뒤 보이는 값입니다. <b>Plus</b>의 2029년은 미확인(—), 2030년은 실제 0입니다. Excel의 <b>Total</b> 행은 별도 사양으로 가져오지 않습니다.</p>
+          <details class="source-example" id="excel-auto-entry">
+            <summary>Excel 자동 입력은 어떻게 동작하나요?</summary>
+            <p><a class="inline" href="examples/demo-lumen.xlsx" download>가상 Excel 예시 다운로드 (XLSX)</a></p>
+            <ol>
+              <li><b>읽을 시트를 준비합니다.</b> 예시 파일에서 <b>Demo Lumen</b> 시트를 여세요. 시트명이 기본 과제명이 됩니다. 통합 문서에는 다음 열 구조의 시트가 하나 있어야 합니다.</li>
+              <li><b>사양과 연도 열을 확인합니다.</b> A열 <b>Description</b>은 사양명, B열 <b>Variant SOP</b>는 그 사양의 양산 시작일입니다. C열부터는 <b>2029</b>, <b>2030</b>, <b>2031</b>처럼 네 자리 연도를 열 제목으로 쓰고 그 아래에 해당 연도의 물량을 입력합니다. 사양별 물량은 수식 대신 정수 값으로 입력하세요. <b>Total</b>과 <b>Grand Total</b> 행은 가져오기에서 제외됩니다.</li>
+              <li><b>사양 한 행을 원본과 대조합니다.</b> <b>Program sources</b>에서 파일을 선택한 뒤 <b>Read and review</b>를 누릅니다. 예를 들어 Excel의 <b>Plus</b> 행은 검토 화면에서 연도별 세 줄로 펼쳐집니다. 세 줄 모두 사양 SOP는 <b>2030-01-01</b>이고, 수량은 순서대로 빈칸, <b>0</b>, <b>3400</b>이어야 합니다. 원본의 대시나 빈칸은 미확인으로 유지됩니다.</li>
+              <li><b>저장하고 조회합니다.</b> 예시에는 OEM 열이 없으므로 <b>OEM as printed</b>에 <b>Demo Motors</b>를 입력하고 <b>Existing project</b>에서 해당 실습 과제를 선택합니다. <b>Confirm and save</b>를 누른 뒤 <b>Program sources → Demo Motors → Demo Lumen</b>을 엽니다.</li>
+            </ol>
+            <p><b>저장 후 화면.</b> <b>Annual quantities</b>에서 사양마다 한 행이 표시됩니다. <b>Plus</b> 행을 가로로 읽으면 2029년은 미확인(—), 2030년은 실제 0, 2031년은 3,400입니다. 상단의 과제 전체 SOP는 별도 항목이므로 이 예시처럼 입력하지 않으면 <b>Not provided</b>로 표시됩니다.</p>
             <div class="sample-grid" tabindex="0" role="region" aria-label="가상 과제의 사양별 연도 물량">
               <table><caption>Demo Motors · Demo Lumen · 원수치(×1)</caption>
-                <thead><tr><th scope="col">사양</th><th scope="col">사양 SOP</th><th scope="col">2029</th><th scope="col">2030</th><th scope="col">2031</th></tr></thead>
+                <thead><tr><th scope="col">Variant</th><th scope="col">Variant SOP</th><th scope="col">2029</th><th scope="col">2030</th><th scope="col">2031</th></tr></thead>
                 <tbody><tr><th scope="row">Standard</th><td>2029-01-01</td><td>7,500</td><td>9,200</td><td>10,400</td></tr>
                   <tr><th scope="row">Plus</th><td>2030-01-01</td><td>—</td><td>0</td><td>3,400</td></tr></tbody>
               </table>
             </div>
-            <a class="inline" href="examples/demo-lumen.xlsx" download>실습용 Excel 다운로드 (XLSX)</a>
+          </details>
+          <details class="source-example" open>
+            <summary>가상 캡처 예시와 OCR 확인값</summary>
+            <figure><img src="examples/demo-lumen.png" width="780" height="380" loading="lazy" alt="가상 Demo Lumen 캡처. SOP 2029, EOP 2031, 생산 거점 Demo Plant, R&amp;D 거점 Demo Lab."><figcaption>인식 결과에서 2029년 <b>7,500</b>, 2030년 <b>9,200</b>, 2031년 <b>13,800</b>인지 확인하세요.</figcaption></figure>
+            <a class="inline" href="examples/demo-lumen.png" download>실습용 캡처 다운로드 (PNG)</a>
           </details>
           <h3>새 과제를 처음 등록할 때</h3>
           <ol>
