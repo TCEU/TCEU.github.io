@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Demand Console 사용 가이드 · TCEU</title>
-  <meta name="description" content="TCEU 팀원을 위한 Demand Console 가이드. 로그인부터 OEM 과제 검색, Tier1 경쟁 비교, 연간 칩 수요와 확정 발주 해석까지 안내합니다.">
+  <meta name="description" content="Demand Console에서 OEM 과제를 만들고 연간 차량·칩 물량을 입력하는 방법. 개별 입력, Excel·CSV 업로드, 검증 및 수요 해석을 안내합니다.">
   <link rel="icon" href="../assets/mark.svg">
   <link rel="stylesheet" href="../assets/guide.css">
   <link rel="stylesheet" href="demand.css">
@@ -18,22 +18,52 @@
     <header class="intro">
       <p class="eyebrow coral">TCEU 팀 사용 가이드</p>
       <h1 lang="en">Demand Console</h1>
-      <p class="lead">OEM 과제를 찾고, 같은 소켓을 두고 경쟁하는 Tier1의 제안과 연도별 칩 수요를 비교하세요.</p>
+      <p class="lead">신규 과제를 등록하거나 기존 과제의 연간 물량을 입력하세요. 저장한 수치는 대시보드와 매트릭스에서 확인할 수 있습니다.</p>
     </header>
     <div class="layout">
       <nav class="chapters" aria-label="사용 가이드 목차">
+        <a href="#entry">데이터 입력</a>
         <a href="#access">로그인과 로그아웃</a>
         <a href="#find">과제 찾기</a>
         <a href="#matrix">Tier1 비교</a>
         <a href="#numbers">수요 지표 읽기</a>
-        <a href="#records">근거 확인과 데이터 입력</a>
+        <a href="#records">근거 확인과 내보내기</a>
         <a href="#help">접속·권한 문제</a>
       </nav>
       <article>
+        <section id="entry">
+          <h2>데이터 입력</h2>
+          <p><a class="inline" href="https://tceu-demand.pages.dev/login/">콘솔에 로그인</a>한 뒤 입력할 과제를 확인하세요. 이미 과제와 해당 연도의 공급사·품번이 등록되어 있다면 <a class="inline" href="#annual-entry">기존 과제의 물량 입력</a>부터 시작합니다. <b>Viewer</b>는 조회만 가능하며, 입력에는 담당 범위의 <b>Editor</b> 또는 <b>Admin</b> 권한이 필요합니다.</p>
+          <h3>새 과제를 처음 등록할 때</h3>
+          <ol>
+            <li><b>Masters</b>에서 관리자가 OEM, Tier1, 칩 제품·품번을 확인하고 누락된 항목을 등록합니다.</li>
+            <li><b>Executive dashboard → New project</b>에서 OEM, 고유 과제 코드, 차종·플랫폼, 시스템·소켓, SOP/EOP, 담당자를 입력하고 <b>Save</b>를 누릅니다. Editor는 새 과제를 만들 OEM에 대한 권한이 필요합니다.</li>
+            <li>과제 상세의 <b>Add opportunity</b>에서 경쟁하는 Tier1마다 기회를 한 건씩 저장합니다. 담당자, 영업 단계, 수주 확률과 업데이트일을 각각 입력합니다.</li>
+            <li><b>Add plan</b>에서 과제·연도당 한 번만 OEM 차량 생산량, 시스템 적용률, 차량당 모듈 수, 가정·출처·기준일을 저장합니다. 기준 공급안이 정해지지 않았다면 <b>Not selected</b>를 유지합니다.</li>
+            <li><b>Add supply</b>에서 해당 연도 계획과 Tier1 기회를 연결하고 점유율(%)을 입력합니다. 채택한 공급안에만 <b>Selected</b>를 표시합니다. 단독 수주는 한 업체, 분할 공급은 선택한 점유율 합계 100% 이하입니다.</li>
+            <li><b>Add fit</b>에서 연도별 공급 항목, 칩 품번, 모듈당 칩 수를 저장합니다. 다음 연도나 다른 품번은 해당 조합을 따로 등록합니다.</li>
+          </ol>
+          <h3 id="annual-entry">기존 과제의 물량 입력</h3>
+          <p><b>한 건</b>은 과제 상세의 <b>Add volume</b>에서 연도·Tier1·품번에 해당하는 항목을 고르고 유형, 수량, 단위, 가정, 출처, 기준일을 입력한 뒤 <b>Save</b>를 누릅니다. 이미 등록된 건은 <b>Reported annual volumes → Edit</b>에서 수정합니다. OEM 차량 생산량은 <b>Assumptions &amp; evidence</b>의 해당 연도에서 <b>Edit plan</b>으로 수정합니다.</p>
+          <p><b>같은 품번의 여러 연도</b>는 <b>Edit annual quantities</b>를 펼쳐 입력합니다. <b>Tier1 / part</b>, <b>Volume type</b>, <b>Unit</b>을 선택하고 <b>Source</b>, <b>As of</b>, <b>Assumptions</b>를 채웁니다. 바꿀 연도만 입력한 뒤 <b>Preview annual changes → Commit reviewed rows</b> 순서로 저장합니다. 이 화면에서 빈 연도는 건너뛰고, <b>Unknown</b>은 미확인 수량, <b>0</b>은 실제 0건을 뜻합니다.</p>
+          <h3>Excel·CSV로 여러 건 입력</h3>
+          <ol>
+            <li>상단 <b>Volume entry</b>에서 <b>Excel template</b> 또는 <b>CSV template</b>을 받습니다. 열 이름과 순서는 유지합니다.</li>
+            <li>한 줄에 한 과제·연도의 물량을 입력합니다. <b>OEM Production Plan</b>은 기존 연도 계획에 <b>vehicle</b> 단위를 쓰고 <b>tier1</b>과 <b>part</b>를 비웁니다. 공급사 물량은 등록된 Tier1 이름과 칩 품번을 사용합니다.</li>
+            <li>파일을 선택하거나 CSV를 붙여 넣고 <b>Preview rows</b>를 누릅니다. 표시된 행 번호의 오류를 수정하세요. 기존 값을 교체할 때만 <b>Replace existing matching records</b>를 선택한 뒤 <b>Commit reviewed rows</b>를 누릅니다.</li>
+            <li>저장된 행 수를 확인하고 과제 상세의 <b>Annual trend</b> 또는 <b>Reported annual volumes</b>에서 해당 연도·유형·단위를 대조합니다.</li>
+          </ol>
+          <details><summary>CSV 작성 예시 보기</summary>
+            <p>가상 과제의 2028년 차량 계획과 칩 발주 예시입니다. 과제 코드, 공급사, 품번은 입력하려는 과제에 등록된 값으로 바꾸세요. CSV에서 수량을 비운 행은 미확인 값으로 처리됩니다.</p>
+            <pre tabindex="0" aria-label="가상 과제 CSV 예시"><code>project,year,tier1,part,kind,quantity,unit,assumptions,source,as_of
+DEMO-ADAS,2028,,,OEM Production Plan,10000,vehicle,Annual plan,Demo plan,2026-11-19
+DEMO-ADAS,2028,Demo Tier1,DEMO-A1,Confirmed PO,6000,pcs,First order,Demo PO,2026-11-19</code></pre>
+          </details>
+        </section>
         <section id="access">
           <h2>팀 계정으로 로그인하기</h2>
           <ol>
-            <li>파일럿에 허용된 네트워크에서 <a class="inline" href="https://tceu-demand.pages.dev/login/">Demand Console 로그인 화면</a>을 엽니다.</li>
+            <li><a class="inline" href="https://tceu-demand.pages.dev/login/">Demand Console 로그인 화면</a>을 엽니다. 파일럿 기간에는 허용된 네트워크에서 접속하세요. 팀 전체 개통 안내를 받으면 외부 네트워크에서도 같은 주소를 사용합니다.</li>
             <li>팀 내부에서 전달받은 공용 ID를 <b>Username</b>에, 비밀번호를 <b>Password</b>에 입력하고 <b>Sign in</b>을 누릅니다.</li>
             <li><b>Executive dashboard</b>가 열리면 로그인된 상태입니다. 사용을 마치면 상단의 <b>Sign out · 계정명</b>을 누릅니다.</li>
           </ol>
@@ -66,10 +96,6 @@
         <section id="records">
           <h2>숫자의 근거 확인하기</h2>
           <p>과제 상세의 <b>Competing suppliers</b>에서 단계·확률·최근 업데이트일을, <b>Annual trend</b>에서 연도별 추이를 확인합니다. <b>Assumptions &amp; evidence</b>에서 해당 연도를 펼치면 계산 가정·출처·기준일과 채택된 공급안을 볼 수 있습니다. 변경 전후 값은 <b>Change history</b>에서 확인하세요.</p>
-          <details><summary>입력 권한이 있을 때 연도별 물량을 갱신하려면</summary>
-            <p>과제 상세에서 개별 값을 수정하거나, 여러 해를 함께 입력할 때는 상단 <b>Volume entry</b>에서 <b>CSV template</b> 또는 <b>Excel template</b>을 받으세요. OEM 생산계획은 등록된 프로젝트·연도와 <b>vehicle</b> 단위를 쓰고 Tier1·품번을 비웁니다. 공급사 물량은 해당 연도에 이미 등록된 공급사·칩 조합을 사용합니다.</p>
-            <p>파일을 선택하고 <b>Preview rows</b>에서 오류와 단위를 확인합니다. 기존 값 교체가 의도된 경우에만 <b>Replace existing matching records</b>를 선택한 뒤 <b>Commit reviewed rows</b>를 누릅니다.</p>
-          </details>
           <details><summary>현재 필터의 결과를 파일로 받으려면</summary>
             <p>대시보드 또는 매트릭스에서 기간과 필터를 적용한 뒤 <b>Export CSV</b> 또는 <b>Export Excel</b>을 누릅니다. 내보내기 권한이 있는 계정에만 버튼이 표시됩니다.</p>
           </details>
@@ -77,7 +103,7 @@
         <section id="help">
           <h2>접속·권한 문제 해결하기</h2>
           <details open><summary>가이드는 열리는데 로그인 화면이 열리지 않아요.</summary>
-            <p>가이드는 공개 페이지이고 콘솔은 파일럿 접속 제한이 적용됩니다. 팀 담당자에게 현재 네트워크의 파일럿 접속 가능 여부를 확인하세요.</p>
+            <p>팀 전체 개통 안내 전이라면 현재 네트워크의 파일럿 접속 가능 여부를 확인하세요. 개통 안내를 받은 뒤에도 열리지 않으면 접속 시각과 화면에 표시된 오류를 팀 담당자에게 알려주세요.</p>
           </details>
           <details><summary>비밀번호가 맞지 않거나 과제가 보이지 않아요.</summary>
             <p>로그인이 거절되면 반복 입력을 멈추고 팀 담당자에게 최신 공용 로그인 정보를 내부 채널로 확인하세요. 로그인 후 목록이 비었다면 먼저 <b>Reset</b>으로 필터를 지웁니다. 계속 비어 있거나 과제 링크에서 404가 나오면 담당자에게 계정의 OEM·과제 조회 범위를 확인해 달라고 요청하세요.</p>

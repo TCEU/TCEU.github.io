@@ -7,6 +7,8 @@
 .chapters a:hover, .inline { color: var(--coral); text-decoration: underline; text-underline-offset: .2em; }
 .handbook section { border-bottom: 1px solid var(--line); padding: 2.5rem 0; }
 .handbook h2 { margin: 0 0 1rem; font-size: clamp(1.45rem, 3vw, 2rem); }
+.handbook h3 { margin: 2rem 0 .75rem; font-size: 1.25rem; }
+.handbook pre { overflow-x: auto; padding: .9rem; background: var(--panel); border: 1px solid var(--line); }
 .handbook p, .handbook li, .handbook dd { color: #c6c6d0; }
 .handbook ol { padding-inline-start: 1.5rem; }
 .handbook li { margin: .65rem 0; padding-inline-start: .35rem; }
