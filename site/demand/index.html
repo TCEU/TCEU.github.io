@@ -51,6 +51,22 @@
             <li><b>조회 범위 선택 후 저장.</b> <b>Existing project</b>에서 이 자료를 볼 팀원에게 허용된 과제를 고릅니다. 실습 파일은 실습용 과제에 연결하세요. OEM 전체 공유가 필요할 때만 <b>Entire OEM</b>을 대신 선택합니다. <b>Confirm and save</b>를 누르면 저장됩니다. 관리자가 두 범위를 모두 비우면 관리자 검토함에 보관됩니다.</li>
             <li><b>연도별 물량 조회.</b> <b>Program sources</b>로 돌아가 연결한 OEM 아래의 과제명을 클릭합니다. 예시를 같은 이름의 실습 과제에 연결했다면 <b>Demo Motors → Demo Lumen</b>입니다. 상세 화면 상단에서 SOP/EOP와 거점을, <b>Annual quantities</b>에서 연도별 수량을 읽습니다. Excel 자료는 사양별 SOP와 수량이 각 행에 표시됩니다. 이 원자료는 대시보드 수요·발주 KPI에 자동 합산되지 않습니다.</li>
           </ol>
+          <details id="ocr-auto-entry">
+            <summary>OCR 자동 입력은 어떻게 동작하나요?</summary>
+            <p><b>Read and review</b>를 누르면 콘솔 서버의 영문 OCR(Tesseract)이 캡처 속 글자를 읽어 검토 양식을 채웁니다. <b>Confirm and save</b>를 눌러야 과제 자료로 저장됩니다. Excel은 시트의 셀 값을 직접 읽습니다.</p>
+            <ol>
+              <li><b>캡처를 준비합니다.</b> 4 MiB 이하, 800만 화소 이하의 PNG 또는 JPEG를 사용하세요. 과제 정보 아래에 연도 한 줄과 수량 한 줄이 보이도록 자릅니다. 한 이미지에서 첫 번째 연도 표를 읽으므로 과제가 여럿이면 따로 올리세요.</li>
+              <li><b>영문 항목명을 기준으로 값을 채웁니다.</b> 각 항목을 한 줄에 적고 이름 뒤에 콜론을 붙입니다. 예를 들어 <code>Customer: Demo Motors</code>는 OEM, <code>Program: Demo Lumen</code>은 과제명으로 들어갑니다. 같은 방식으로 <code>SOP</code>, <code>EOP</code>, <code>Production Site</code>, <code>R&amp;D Site</code>를 읽습니다. 원본에 연도만 있으면 검토 화면에도 연도만 입력하세요.</li>
+              <li><b>연도와 수량을 왼쪽부터 짝짓습니다.</b> 연도 행이 <code>2029　2030　2031</code>이고 바로 아래 행이 <code>7,500　9,200　13,800</code>이면 2030년 수량은 <b>9,200</b>입니다. <b>0</b>은 실제 0으로, 대시(<b>—</b>)는 미확인으로 읽습니다. 단위가 원본에 없으면 <b>Confirmed quantity unit</b>은 비워 두세요.</li>
+              <li><b>원본과 대조하고 고칩니다.</b> 연도와 수량의 칸 수가 다르면 경고와 함께 해당 행의 수량이 모두 빈칸으로 표시됩니다. 연도 행 자체를 찾지 못하면 연도부터 직접 입력하세요. 경고가 없어도 숫자가 잘못 읽힐 수 있습니다. 아래 예시처럼 <b>Annual quantities (CSV)</b>의 첫 줄은 유지하고, 각 연도의 수량은 천 단위 쉼표 없이 고칩니다.</li>
+            </ol>
+            <pre tabindex="0" aria-label="가상 과제의 OCR 검토 양식 예시"><code>variant,variant_sop,year,quantity
+,,2029,7500
+,,2030,9200
+,,2031,13800</code></pre>
+            <p>앞의 두 칸은 사양명과 사양별 SOP입니다. 이 캡처는 과제 전체 수량이므로 비워 둡니다. 2030년 수량을 확인할 수 없다면 <code>,,2030,</code>으로 남기세요.</p>
+            <p><b>저장 후 확인.</b> <b>Existing project</b>에서 연결할 과제를 확인하고 <b>Confirm and save</b>를 누릅니다. <b>Program sources → 해당 OEM → 과제명 → Annual quantities</b>에서 저장값을 확인하세요. 검토 화면이 열린 뒤 15분이 지나 만료됐다는 메시지가 나오면 파일을 다시 올려 검토를 시작합니다.</p>
+          </details>
           <details class="source-example" open>
             <summary>가상 캡처 예시와 OCR 확인값</summary>
             <figure><img src="examples/demo-lumen.png" width="780" height="380" loading="lazy" alt="가상 Demo Lumen 캡처. SOP 2029, EOP 2031, 생산 거점 Demo Plant, R&amp;D 거점 Demo Lab."><figcaption>인식 결과에서 2029년 <b>7,500</b>, 2030년 <b>9,200</b>, 2031년 <b>13,800</b>인지 확인하세요.</figcaption></figure>
