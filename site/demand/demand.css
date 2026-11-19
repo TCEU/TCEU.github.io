@@ -1,0 +1,24 @@
+.handbook { max-width: 1060px; }
+.intro { padding: clamp(3rem, 8vw, 6rem) 0 2rem; border-bottom: 1px solid var(--line); }
+.intro .lead { max-width: 38rem; }
+.layout { display: grid; grid-template-columns: 13rem minmax(0, 1fr); gap: clamp(2rem, 6vw, 5rem); }
+.chapters { position: sticky; top: 7rem; align-self: start; display: grid; gap: .55rem; padding: 2.5rem 0; }
+.chapters a { color: #cbcbd4; }
+.chapters a:hover, .inline { color: var(--coral); text-decoration: underline; text-underline-offset: .2em; }
+.handbook section { border-bottom: 1px solid var(--line); padding: 2.5rem 0; }
+.handbook h2 { margin: 0 0 1rem; font-size: clamp(1.45rem, 3vw, 2rem); }
+.handbook p, .handbook li, .handbook dd { color: #c6c6d0; }
+.handbook ol { padding-inline-start: 1.5rem; }
+.handbook li { margin: .65rem 0; padding-inline-start: .35rem; }
+.handbook li::marker { color: var(--coral); }
+.note { border-left: 3px solid var(--coral); padding: .8rem 1rem; background: var(--panel); }
+.handbook dt { margin-top: 1rem; font-weight: 700; }
+.handbook dd { margin-left: 0; }
+.handbook details { border-top: 1px solid var(--line); padding: 1rem 0; }
+.handbook summary { cursor: pointer; font-weight: 600; }
+.handbook details p { margin: .8rem 0 0; }
+@media (max-width: 760px) {
+  .layout { display: block; }
+  .chapters { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); border-bottom: 1px solid var(--line); padding: 1.5rem 0; }
+  .handbook section { padding: 2rem 0; }
+}
