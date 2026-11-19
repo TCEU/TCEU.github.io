@@ -18,7 +18,7 @@
     <header class="intro">
       <p class="eyebrow coral">TCEU 팀 사용 가이드</p>
       <h1 lang="en">Demand Console</h1>
-      <p class="lead">팀 계정으로 로그인한 뒤 신규 과제를 등록하거나 기존 과제의 연간 물량을 입력하세요. 저장한 수치는 대시보드와 매트릭스에서 확인할 수 있습니다.</p>
+      <p class="lead">팀 계정으로 로그인한 뒤 과제를 등록하고 연간 물량을 입력하세요. 캡처나 Excel로 받은 자료는 OEM과 과제별로 보관하고 연도별 수치를 확인할 수 있습니다.</p>
     </header>
     <div class="layout">
       <nav class="chapters" aria-label="사용 가이드 목차">
@@ -42,7 +42,32 @@
         </section>
         <section id="entry">
           <h2>데이터 입력</h2>
-          <p>먼저 입력할 과제를 확인하세요. 이미 과제와 해당 연도의 공급사·품번이 등록되어 있다면 <a class="inline" href="#annual-entry">기존 과제의 물량 입력</a>부터 시작합니다. <b>Viewer</b>는 조회만 가능하며, 입력에는 담당 범위의 <b>Editor</b> 또는 <b>Admin</b> 권한이 필요합니다.</p>
+          <p>캡처나 사양별 Excel 원본을 받았다면 <a class="inline" href="#program-sources">캡처·Excel 자료 등록</a>부터 시작하세요. 이미 등록된 과제의 발주·출하 수량을 갱신하려면 <a class="inline" href="#annual-entry">기존 과제의 물량 입력</a>으로 이동하세요. 입력에는 담당 범위의 <b>Editor</b> 또는 <b>Admin</b> 권한이 필요합니다. <b>Viewer</b>는 허용된 자료를 조회할 수 있습니다.</p>
+          <h3 id="program-sources">캡처·Excel 자료 등록과 연도별 물량 조회</h3>
+          <p>아래 예시는 가상 OEM <b>Demo Motors</b>의 과제 <b>Demo Lumen</b>입니다. 이미지는 과제 전체 물량, Excel은 사양별 물량을 담고 있습니다. 실습할 때는 두 파일 중 하나를 선택하세요.</p>
+          <ol>
+            <li><b>파일 선택.</b> 콘솔 상단의 <b>Program sources</b>를 열고 <b>Screenshot or volume worksheet</b>에서 PNG·JPEG 또는 XLSX 파일 하나를 고릅니다. 파일당 최대 4 MiB입니다. 이미지에서는 영문 항목과 연도 행·수량 행 한 쌍이 잘 보이도록 표 하나만 잘라주세요. Excel에서는 <b>Description</b>, <b>Variant SOP</b>, 연도 열을 사용하며 시트명이 기본 과제명이 됩니다.</li>
+            <li><b>인식 결과 확인.</b> <b>Read and review</b>를 누른 뒤 <b>Review program source</b>에서 OEM, Program, SOP/EOP, 생산·R&amp;D 거점, 연도와 수량을 원본과 대조하고 잘못 읽은 값을 고칩니다. 예시 Excel에는 OEM 열이 없으므로 <b>OEM as printed</b>에 <b>Demo Motors</b>를 입력합니다. 수량을 고칠 때는 <b>13800</b>처럼 쉼표 없이 원수치(×1)를 쓰고, 물리 단위가 불명확하면 <b>Confirmed quantity unit</b>을 비워 둡니다.</li>
+            <li><b>조회 범위 선택 후 저장.</b> <b>Existing project</b>에서 이 자료를 볼 팀원에게 허용된 과제를 고릅니다. 실습 파일은 실습용 과제에 연결하세요. OEM 전체 공유가 필요할 때만 <b>Entire OEM</b>을 대신 선택합니다. <b>Confirm and save</b>를 누르면 저장됩니다. 관리자가 두 범위를 모두 비우면 관리자 검토함에 보관됩니다.</li>
+            <li><b>연도별 물량 조회.</b> <b>Program sources</b>로 돌아가 연결한 OEM 아래의 과제명을 클릭합니다. 예시를 같은 이름의 실습 과제에 연결했다면 <b>Demo Motors → Demo Lumen</b>입니다. 상세 화면 상단에서 SOP/EOP와 거점을, <b>Annual quantities</b>에서 연도별 수량을 읽습니다. Excel 자료는 사양별 SOP와 수량이 각 행에 표시됩니다. 이 원자료는 대시보드 수요·발주 KPI에 자동 합산되지 않습니다.</li>
+          </ol>
+          <details class="source-example" open>
+            <summary>가상 캡처 예시와 OCR 확인값</summary>
+            <figure><img src="examples/demo-lumen.png" width="780" height="380" loading="lazy" alt="가상 Demo Lumen 캡처. SOP 2029, EOP 2031, 생산 거점 Demo Plant, R&amp;D 거점 Demo Lab."><figcaption>인식 결과에서 2029년 <b>7,500</b>, 2030년 <b>9,200</b>, 2031년 <b>13,800</b>인지 확인하세요.</figcaption></figure>
+            <a class="inline" href="examples/demo-lumen.png" download>실습용 캡처 다운로드 (PNG)</a>
+          </details>
+          <details class="source-example">
+            <summary>가상 Excel 예시와 사양별 조회 결과</summary>
+            <p>아래는 예시 파일을 저장한 뒤 보이는 값입니다. <b>Plus</b>의 2029년은 미확인(—), 2030년은 실제 0입니다. Excel의 <b>Total</b> 행은 별도 사양으로 가져오지 않습니다.</p>
+            <div class="sample-grid" tabindex="0" role="region" aria-label="가상 과제의 사양별 연도 물량">
+              <table><caption>Demo Motors · Demo Lumen · 원수치(×1)</caption>
+                <thead><tr><th scope="col">사양</th><th scope="col">사양 SOP</th><th scope="col">2029</th><th scope="col">2030</th><th scope="col">2031</th></tr></thead>
+                <tbody><tr><th scope="row">Standard</th><td>2029-01-01</td><td>7,500</td><td>9,200</td><td>10,400</td></tr>
+                  <tr><th scope="row">Plus</th><td>2030-01-01</td><td>—</td><td>0</td><td>3,400</td></tr></tbody>
+              </table>
+            </div>
+            <a class="inline" href="examples/demo-lumen.xlsx" download>실습용 Excel 다운로드 (XLSX)</a>
+          </details>
           <h3>새 과제를 처음 등록할 때</h3>
           <ol>
             <li><b>Masters</b>에서 관리자가 OEM, Tier1, 칩 제품·품번을 확인하고 누락된 항목을 등록합니다.</li>

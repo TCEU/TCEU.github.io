@@ -19,6 +19,14 @@
 .handbook details { border-top: 1px solid var(--line); padding: 1rem 0; }
 .handbook summary { cursor: pointer; font-weight: 600; }
 .handbook details p { margin: .8rem 0 0; }
+.source-example figure { margin: 1rem 0; }
+.source-example img { display: block; width: 100%; height: auto; border-radius: .5rem; }
+.source-example figcaption { margin-top: .6rem; }
+.sample-grid { overflow-x: auto; margin: 1rem 0; }
+.sample-grid table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.sample-grid caption { text-align: left; padding-bottom: .5rem; }
+.sample-grid :is(th, td) { text-align: right; padding: .5rem .7rem; border-bottom: 1px solid var(--line); }
+.sample-grid tr > :first-child { text-align: left; }
 @media (max-width: 760px) {
   .layout { display: block; }
   .chapters { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); border-bottom: 1px solid var(--line); padding: 1.5rem 0; }
