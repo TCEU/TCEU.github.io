@@ -18,12 +18,12 @@
     <header class="intro">
       <p class="eyebrow coral">TCEU 팀 사용 가이드</p>
       <h1 lang="en">Demand Console</h1>
-      <p class="lead">신규 과제를 등록하거나 기존 과제의 연간 물량을 입력하세요. 저장한 수치는 대시보드와 매트릭스에서 확인할 수 있습니다.</p>
+      <p class="lead">팀 계정으로 로그인한 뒤 신규 과제를 등록하거나 기존 과제의 연간 물량을 입력하세요. 저장한 수치는 대시보드와 매트릭스에서 확인할 수 있습니다.</p>
     </header>
     <div class="layout">
       <nav class="chapters" aria-label="사용 가이드 목차">
+        <a href="#access">팀 계정으로 로그인하기</a>
         <a href="#entry">데이터 입력</a>
-        <a href="#access">로그인과 로그아웃</a>
         <a href="#find">과제 찾기</a>
         <a href="#matrix">Tier1 비교</a>
         <a href="#numbers">수요 지표 읽기</a>
@@ -31,9 +31,18 @@
         <a href="#help">접속·권한 문제</a>
       </nav>
       <article>
+        <section id="access">
+          <h2>팀 계정으로 로그인하기</h2>
+          <ol>
+            <li><a class="inline" href="https://tceu-demand.pages.dev/login/">Demand Console 로그인 화면</a>을 엽니다. 파일럿 기간에는 허용된 네트워크에서 접속하세요. 팀 전체 개통 안내를 받으면 외부 네트워크에서도 같은 주소를 사용합니다.</li>
+            <li>팀 내부에서 전달받은 공용 ID를 <b>Username</b>에, 비밀번호를 <b>Password</b>에 입력하고 <b>Sign in</b>을 누릅니다.</li>
+            <li><b>Executive dashboard</b>가 열리면 로그인된 상태입니다. 사용을 마치면 상단의 <b>Sign out · 계정명</b>을 누릅니다.</li>
+          </ol>
+          <p class="note">공용 계정으로 저장한 변경 이력에는 팀 계정명이 표시됩니다. 개인별 변경 기록이 필요한 작업은 개인 계정으로 진행하세요.</p>
+        </section>
         <section id="entry">
           <h2>데이터 입력</h2>
-          <p><a class="inline" href="https://tceu-demand.pages.dev/login/">콘솔에 로그인</a>한 뒤 입력할 과제를 확인하세요. 이미 과제와 해당 연도의 공급사·품번이 등록되어 있다면 <a class="inline" href="#annual-entry">기존 과제의 물량 입력</a>부터 시작합니다. <b>Viewer</b>는 조회만 가능하며, 입력에는 담당 범위의 <b>Editor</b> 또는 <b>Admin</b> 권한이 필요합니다.</p>
+          <p>먼저 입력할 과제를 확인하세요. 이미 과제와 해당 연도의 공급사·품번이 등록되어 있다면 <a class="inline" href="#annual-entry">기존 과제의 물량 입력</a>부터 시작합니다. <b>Viewer</b>는 조회만 가능하며, 입력에는 담당 범위의 <b>Editor</b> 또는 <b>Admin</b> 권한이 필요합니다.</p>
           <h3>새 과제를 처음 등록할 때</h3>
           <ol>
             <li><b>Masters</b>에서 관리자가 OEM, Tier1, 칩 제품·품번을 확인하고 누락된 항목을 등록합니다.</li>
@@ -59,15 +68,6 @@
 DEMO-ADAS,2028,,,OEM Production Plan,10000,vehicle,Annual plan,Demo plan,2026-11-19
 DEMO-ADAS,2028,Demo Tier1,DEMO-A1,Confirmed PO,6000,pcs,First order,Demo PO,2026-11-19</code></pre>
           </details>
-        </section>
-        <section id="access">
-          <h2>팀 계정으로 로그인하기</h2>
-          <ol>
-            <li><a class="inline" href="https://tceu-demand.pages.dev/login/">Demand Console 로그인 화면</a>을 엽니다. 파일럿 기간에는 허용된 네트워크에서 접속하세요. 팀 전체 개통 안내를 받으면 외부 네트워크에서도 같은 주소를 사용합니다.</li>
-            <li>팀 내부에서 전달받은 공용 ID를 <b>Username</b>에, 비밀번호를 <b>Password</b>에 입력하고 <b>Sign in</b>을 누릅니다.</li>
-            <li><b>Executive dashboard</b>가 열리면 로그인된 상태입니다. 사용을 마치면 상단의 <b>Sign out · 계정명</b>을 누릅니다.</li>
-          </ol>
-          <p class="note">공용 계정으로 저장한 변경 이력에는 팀 계정명이 표시됩니다. 개인별 변경 기록이 필요한 작업은 개인 계정으로 진행하세요.</p>
         </section>
         <section id="find">
           <h2>담당 OEM의 과제 찾기</h2>
