@@ -14,5 +14,5 @@
  viewport:innerWidth+'x'+innerHeight,language:navigator.language,browser:b?({Edg:'Edge',Version:'Safari'}[b[1]]||b[1])+'/'+b[2]:'Other',revision:script.dataset.revision||'unknown',openedAt:new Date().toISOString()};
  uri.search=new URLSearchParams(meta);a.href=uri.href;
  }
- populate();a.addEventListener('click',populate);a.addEventListener('pointerdown',populate);document.body.append(a);
+ populate();a.addEventListener('click',e=>{populate();if(e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;e.preventDefault();window.open(a.href,'_blank','popup=yes,noopener,noreferrer,resizable=yes,scrollbars=yes,width=680,height=740');});a.addEventListener('pointerdown',populate);document.body.append(a);
 })();
