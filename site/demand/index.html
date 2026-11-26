@@ -90,7 +90,16 @@
             <figure><img src="examples/demo-lumen.png" width="780" height="380" loading="lazy" alt="가상 Demo Lumen 캡처. SOP 2029, EOP 2031, 생산 거점 Demo Plant, R&amp;D 거점 Demo Lab."><figcaption>인식 결과에서 2029년 <b>7,500</b>, 2030년 <b>9,200</b>, 2031년 <b>13,800</b>인지 확인하세요.</figcaption></figure>
             <a class="inline" href="examples/demo-lumen.png" download>실습용 캡처 다운로드 (PNG)</a>
           </details>
-          <h3>새 과제를 처음 등록할 때</h3>
+          <h3 id="project-tasks">과제 상세: 지금 하려는 일로 찾기</h3>
+          <p>원본을 올린 뒤 물량만 볼 때는 메뉴를 펼칠 필요가 없습니다. <b>View volume chart &amp; table</b>에서 연도별 수량을 확인하세요. 편집자는 <b>Source files</b>의 해당 파일 아래 <b>Edit model notes</b>로 사양별 실제 모델명을, <b>Set Tier 1</b>으로 그 파일의 업체명을 저장할 수 있습니다.</p>
+          <dl>
+            <dt><b>플랫폼·소켓·담당자 변경</b></dt><dd><b>Edit project details or add a planning record → Edit project</b>에서 필요한 값만 고치고 저장합니다. Viewer에게는 <b>View project details and volume matrix</b>가 표시됩니다.</dd>
+            <dt><b>경쟁 업체와 예상 수요 비교</b></dt><dd><b>Compare suppliers and check the forecast</b>를 펼칩니다. 업체별 수주 확률은 <b>Competing suppliers</b>에서, 연도별 수량은 <b>Annual trend</b>에서 봅니다. 계산 근거는 <b>Assumptions &amp; evidence</b>에서 해당 연도를 펼치세요.</dd>
+            <dt><b>변경한 사람과 값 확인</b></dt><dd><b>See who changed what</b>에서 날짜와 작성자를 보고 기록 하나를 열어 <b>Before / After</b>를 비교합니다. 여기서는 값을 수정하지 않습니다.</dd>
+            <dt><b>빈 과제 삭제</b></dt><dd>권한이 있을 때만 보이는 <b>Delete empty project</b>를 열고, 삭제할 과제 코드를 대조한 뒤 직접 입력해 확인합니다. 파일 한 건을 지우는 메뉴가 아니며 연결 자료가 있는 과제는 삭제되지 않습니다.</dd>
+          </dl>
+          <h3>원본 물량 외에 영업 계획을 직접 등록할 때</h3>
+          <p>아래 Add 메뉴는 <b>Edit project details or add a planning record</b> 안에 있습니다. 파일의 Tier 1 이름만 지정하려는 경우에는 이 과정을 건너뛰세요.</p>
           <ol>
             <li><b>Masters</b>에서 관리자가 OEM, Tier1, 칩 제품·품번을 확인하고 누락된 항목을 등록합니다.</li>
             <li><b>Executive dashboard → New project</b>에서 간소화된 등록 화면에서 OEM, 고유 과제 코드, 차종·플랫폼을 입력하고 <b>Save</b>를 누릅니다. Editor는 새 과제를 만들 OEM에 대한 권한이 필요합니다.</li>
@@ -142,7 +151,7 @@ DEMO-ADAS,2028,Demo Tier1,DEMO-A1,Confirmed PO,6000,pcs,First order,Demo PO,2026
         </section>
         <section id="records">
           <h2>숫자의 근거 확인하기</h2>
-          <p>과제 상세의 <b>Competing suppliers</b>에서 단계·확률·최근 업데이트일을, <b>Annual trend</b>에서 연도별 추이를 확인합니다. <b>Assumptions &amp; evidence</b>에서 해당 연도를 펼치면 계산 가정·출처·기준일과 채택된 공급안을 볼 수 있습니다. 변경 전후 값은 <b>Change history</b>에서 확인하세요.</p>
+          <p><a href="#project-tasks">과제 상세의 작업별 메뉴</a>에서 <b>Compare suppliers and check the forecast</b>를 열어 연도별 가정과 근거를, <b>See who changed what</b>을 열어 변경 전후 값을 확인하세요.</p>
           <details><summary>현재 필터의 결과를 파일로 받으려면</summary>
             <p>대시보드 또는 매트릭스에서 기간과 필터를 적용한 뒤 <b>Export CSV</b> 또는 <b>Export Excel</b>을 누릅니다. 내보내기 권한이 있는 계정에만 버튼이 표시됩니다.</p>
           </details>
